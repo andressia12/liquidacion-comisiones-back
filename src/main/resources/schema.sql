@@ -1,0 +1,7 @@
+
+CREATE TABLE transacciones (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    monto DECIMAL(19,2) NOT NULL,
+    comision DECIMAL(19,2) NOT NULL,
+    fecha TIMESTAMP NOT NULL
+);
