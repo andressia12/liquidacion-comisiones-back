@@ -24,7 +24,7 @@ public class TransaccionController {
     }
 
     @PostMapping
-    public Mono<TransaccionResponse> create(
+    public Mono<TransaccionResponse> crear(
             @Valid @RequestBody Mono<CrearTransaccionRequest> request) {
         return request
                 .flatMap(req -> service.crear(req.getMonto()))

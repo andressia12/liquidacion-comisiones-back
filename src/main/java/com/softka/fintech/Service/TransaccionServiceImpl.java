@@ -29,10 +29,10 @@ public class TransaccionServiceImpl implements TransaccionService {
     public Mono<Transaccion> crear(BigDecimal monto) {
         return validarMonto(monto)
                 .map(montoValido -> {
-                    var commision = calculadorComisiones.calcular(montoValido);
+                    var comision = calculadorComisiones.calcular(montoValido);
                     return new Transaccion(
                             montoValido,
-                            commision,
+                            comision,
                             LocalDateTime.now());
                 })
                 .flatMap(repository::save);

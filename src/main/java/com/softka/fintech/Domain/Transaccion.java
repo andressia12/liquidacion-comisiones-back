@@ -5,9 +5,11 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 import lombok.Getter;
+import lombok.Setter;
 
-@Table("transacciones")
+@Table("TRANSACCIONES")
 @Getter
+@Setter
 public class Transaccion {
 
     @Id
