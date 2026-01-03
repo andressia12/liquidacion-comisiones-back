@@ -8,6 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
+/**
+ * DTO de respuesta para exponer los datos de una transacción al cliente.
+ */
 public class TransaccionResponse {
 
     private final Long id;

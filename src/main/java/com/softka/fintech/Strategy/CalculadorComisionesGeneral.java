@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementación general de la estrategia de cálculo de comisiones.
+ * Aplica una tasa baja hasta un umbral y una tasa alta para montos mayores.
+ */
 @Component
 public class CalculadorComisionesGeneral implements CalculadorComisiones {
     private static final BigDecimal UMBRAL_MAXIMO = BigDecimal.valueOf(10_000);

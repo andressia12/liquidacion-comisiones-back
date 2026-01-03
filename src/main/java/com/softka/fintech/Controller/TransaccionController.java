@@ -14,6 +14,13 @@ import jakarta.validation.Valid;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * REST controller que expone los endpoints para manejar transacciones.
+ * <p>
+ * Endpoints:
+ * - POST /transacciones : crea una nueva transacción.
+ * - GET  /transacciones : obtiene todas las transacciones.
+ */
 @RestController
 @RequestMapping("/transacciones")
 public class TransaccionController {
@@ -23,8 +30,14 @@ public class TransaccionController {
         this.service = service;
     }
 
-    @PostMapping
-    public Mono<TransaccionResponse> crear(
+        /**
+         * Crea una nueva transacción a partir del request recibido.
+         *
+         * @param request Mono con el cuerpo validado que contiene el monto
+         * @return Mono con la respuesta de la transacción creada
+         */
+        @PostMapping
+        public Mono<TransaccionResponse> crear(
             @Valid @RequestBody Mono<CrearTransaccionRequest> request) {
         return request
                 .flatMap(req -> service.crear(req.getMonto()))
@@ -35,6 +48,11 @@ public class TransaccionController {
                         tx.getFecha()));
     }
 
+    /**
+     * Devuelve todas las transacciones almacenadas.
+     *
+     * @return Flux con las transacciones en formato de respuesta
+     */
     @GetMapping
     public Flux<TransaccionResponse> findAll() {
         return service.findAll()

@@ -12,6 +12,10 @@ import com.softka.fintech.Strategy.CalculadorComisiones;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Implementación del servicio de transacciones.
+ * Encapsula la validación del monto y la creación de la entidad.
+ */
 @Service
 public class TransaccionServiceImpl implements TransaccionService {
 
@@ -43,6 +47,12 @@ public class TransaccionServiceImpl implements TransaccionService {
         return repository.findAll();
     }
 
+    /**
+     * Valida que el monto sea mayor que cero.
+     *
+     * @param monto monto a validar
+     * @return Mono con el mismo monto si es válido o error si no lo es
+     */
     private Mono<BigDecimal> validarMonto(BigDecimal monto) {
         if (monto == null || monto.signum() <= 0) {
             return Mono.error(new IllegalArgumentException("El monto debe ser mayor que cero."));

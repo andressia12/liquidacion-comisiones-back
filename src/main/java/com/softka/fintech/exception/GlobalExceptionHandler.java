@@ -8,6 +8,10 @@ import org.springframework.web.bind.support.WebExchangeBindException;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * Manejador global de excepciones para los controladores web.
+ * Convierte excepciones en objetos `ErrorResponse` adecuados para el cliente.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(WebExchangeBindException.class)

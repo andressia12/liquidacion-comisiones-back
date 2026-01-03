@@ -9,7 +9,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
+/**
+ * DTO de entrada para la creación de una transacción.
+ */
 public class CrearTransaccionRequest {
+    /**
+     * Monto de la transacción. Debe ser un valor positivo.
+     */
     @NotNull
     @Positive
     private BigDecimal monto;
